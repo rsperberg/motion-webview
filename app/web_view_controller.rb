@@ -26,6 +26,11 @@ class WebViewController < UIViewController
   end
   
   def shouldAutorotateToInterfaceOrientation(interfaceOrientation)
+    if UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad
+      if interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown
+        return false
+      end
+    end
     true
   end
   
