@@ -37,9 +37,9 @@ class WebViewController < UIViewController
     true
   end
   
-  # Open links in Mobile Safari
+  # Open absolute links in Mobile Safari
   def webView(inWeb, shouldStartLoadWithRequest:inRequest, navigationType:inType)
-    if inType == UIWebViewNavigationTypeLinkClicked
+    if inType == UIWebViewNavigationTypeLinkClicked && inRequest.URL.scheme != 'file' 
       UIApplication.sharedApplication.openURL(inRequest.URL)
       return false
     end
